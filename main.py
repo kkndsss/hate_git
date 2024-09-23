@@ -70,7 +70,7 @@ def parse_args():
     parser.add_argument(
         "--run_name",
         type=str,
-        default=f"{args.model_name}_{args.lr}_{args.batch_size}",
+        default="bert-test",
         help="wandb 에 기록되는 run name",
     )
 
@@ -80,6 +80,6 @@ def parse_args():
 
 if __name__ == "__main__":
     os.environ["TOKENIZERS_PARALLELISM"] = "false"  # tokenizer 사용 시 warning 방지
-    wandb.init(project="ssac")  # 프로젝트 이름 설정
     args = parse_args()
+    wandb.init(project="ssac", name=args.run_name)  # 프로젝트 이름 설정
     train(args)
