@@ -1,5 +1,6 @@
 import os
 import argparse
+import wandb
 from model import train
 
 
@@ -66,11 +67,19 @@ def parse_args():
         help="추론 시 불러올 모델의 경로",
     )
 
+    parser.add_argument(
+        "--run_name",
+        type=str,
+        default=f"{args.model_name}_{args.lr}_{args.batch_size}",
+        help="wandb 에 기록되는 run name",
+    )
+
     args = parser.parse_args()
     return args
 
 
 if __name__ == "__main__":
-    os.environ["TOKENIZERS_PARALLELISM"] = "false"
+    os.environ["TOKENIZERS_PARALLELISM"] = "false"  # tokenizer 사용 시 warning 방지
+    wandb.init(project="ssac")  # 프로젝트 이름 설정
     args = parse_args()
     train(args)
