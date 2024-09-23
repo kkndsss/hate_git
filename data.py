@@ -21,7 +21,7 @@ class hate_dataset(torch.utils.data.Dataset):
 
 def load_data(dataset_dir):
     """csv file을 dataframe으로 load"""
-    dataset = pd.read_csv(dataset_dir)[:500]
+    dataset = pd.read_csv(dataset_dir)
     print("dataframe 의 형태")
     print("-" * 100)
     print(dataset.head())
