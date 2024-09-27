@@ -1,13 +1,10 @@
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from torch.utils.data import DataLoader
 import pandas as pd
 import torch
 import os
-import torch.nn.functional as F
 
 import numpy as np
 from tqdm import tqdm
-from sklearn.metrics import accuracy_score, f1_score
 from model import load_model_for_inference
 from data import prepare_dataset
 
