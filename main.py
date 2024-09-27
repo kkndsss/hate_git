@@ -83,3 +83,8 @@ if __name__ == "__main__":
     args = parse_args()
     wandb.init(project="ssac", name=args.run_name)  # 프로젝트 이름 설정
     train(args)
+
+# .sh 
+# python main.py --run_name "ssac-bert" --lr 5e-4
+# python main.py --run_name "ssac-bert" --lr 5e-3
+# python main.py --model_name klue/roberta-large

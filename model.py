@@ -30,11 +30,22 @@ def load_tokenizer_and_model_for_train(args):
     print("--- Modeling Done ---")
     return tokenizer, model
 
+def load_model_for_inference(model_name,model_dir):
+    """추론(infer)에 필요한 모델과 토크나이저 load """
+    # load tokenizer
+    Tokenizer_NAME = model_name
+    tokenizer = AutoTokenizer.from_pretrained(Tokenizer_NAME)
+
+    ## load my model
+    model = AutoModelForSequenceClassification.from_pretrained(model_dir)
+
+    return tokenizer, model
+
 
 def load_trainer_for_train(args, model, hate_train_dataset, hate_valid_dataset):
     """학습(train)을 위한 huggingface trainer 설정"""
     training_args = TrainingArguments(
-        output_dir=args.save_path + "results",  # output directory
+        output_dir=args.save_path + "/results",  # output directory
         save_total_limit=args.save_limit,  # number of total save model.
         save_steps=args.save_step,  # model saving step.
         num_train_epochs=args.epochs,  # total number of training epochs
@@ -97,8 +108,8 @@ def train(args):
     pl.seed_everything(seed=42, workers=False)
 
     # set device
-    device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
-    # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    # device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print("device:", device)
 
     # set model and tokenizer
@@ -119,4 +130,4 @@ def train(args):
     print("--- Start train ---")
     trainer.train()
     print("--- Finish train ---")
-    model.save_pretrained("./best_model")
+    model.save_pretrained(args.model_dir)
