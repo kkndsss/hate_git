@@ -2,6 +2,47 @@
 
 이 프로젝트는 혐오 발언(hate speech) 분류 모델을 학습하고 추론하는 과정을 포함하고 있습니다. 각 모듈의 역할 및 GCP 환경 설정에 대한 설명을 다음과 같이 정리하였습니다.
 
+## 프로젝트 코드 구조
+```plaintext
+├── LICENSE
+├── NIKL_AU_2023_COMPETITION_v1.0
+│   ├── dev.csv
+│   ├── test.csv
+│   └── train.csv
+├── README.md
+├── best_model
+│   ├── config.json
+│   └── model.safetensors
+├── data.py
+├── inference.py
+├── main.py
+├── model.py
+├── model
+│   └── results
+│       └── checkpoint
+│           ├── config.json
+│           ├── model.safetensors
+│           ├── optimizer.pt
+│           ├── rng_state.pth
+│           ├── scheduler.pt
+│           ├── trainer_state.json
+│           └── training_args.bin
+├── prediction
+│   └── result.csv
+├── preprocessing.ipynb
+├── requirements.txt
+├── sh_for_gcp
+│   ├── clone_git_repo.sh
+│   ├── cuda_install.sh
+│   ├── dependencies_install.sh
+│   ├── full_install.sh
+│   ├── pyenv_setup.sh
+│   └── python_virtualenv.sh
+├── utils.py
+└── wandb
+    └── [다양한 실험 로그 파일들]
+```
+
 ## 목차
 1. [코드에 대한 설명](#1-코드에-대한-설명)
     - 1.1 [데이터 처리 모듈 (data.py)](#11-데이터-처리-모듈-datapy)
