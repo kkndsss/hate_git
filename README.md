@@ -25,43 +25,32 @@
 ## 1. 프로젝트 코드 구조
 ```plaintext
 Korean_AU/
-├── LICENSE
-├── README.md
-├── NIKL_AU_2023_COMPETITION_v1.0/         # 데이터셋 폴더
+├── README.md                             # 프로젝트 설명 파일
+├── LICENSE                               # 라이선스 파일
+├── NIKL_AU_2023_COMPETITION_v1.0/        # 데이터셋 폴더
 │   ├── dev.csv
 │   ├── test.csv
 │   └── train.csv
-├── best_model/                            # 최종 모델 저장 폴더
-│   ├── config.json
-│   └── model.safetensors
-├── model/                                 # 모델 체크포인트 폴더
-│   └── results/
-│       └── checkpoint/                    # 모델 체크포인트 파일들
-│           ├── config.json
-│           ├── model.safetensors
-│           ├── optimizer.pt
-│           ├── rng_state.pth
-│           ├── scheduler.pt
-│           ├── trainer_state.json
-│           └── training_args.bin
-├── prediction/                            # 추론 결과 폴더
-│   └── result.csv
-├── sh_for_gcp/                            # GCP 환경 설정 쉘 스크립트
+├── Jupyter Notebook/                     # 데이터 전처리 Jupyter Notebook
+│   └── preprocessing.ipynb
+├── model/                                # 모델 체크포인트 및 결과 파일 폴더
+│   └── results
+├── requirements.txt                      # 필요한 라이브러리 목록
+├── sh_for_gcp/                           # GCP 환경 설정 쉘 스크립트 폴더
 │   ├── clone_git_repo.sh
 │   ├── cuda_install.sh
 │   ├── dependencies_install.sh
 │   ├── full_install.sh
 │   ├── pyenv_setup.sh
 │   └── python_virtualenv.sh
-├── wandb/                                 # W&B 훈련 로그 폴더
-│   └── [다양한 실험 로그 파일들]
-├── data.py                                # 데이터 처리 모듈
-├── inference.py                           # 추론 모듈
-├── main.py                                # 메인 모듈
-├── model.py                               # 모델 관련 모듈
-├── preprocessing.ipynb                    # 데이터 전처리 Jupyter Notebook
-├── requirements.txt                       # 필요한 라이브러리 목록
-└── utils.py                               # 유틸리티 모듈
+├── src/                                  # 소스 코드 폴더
+│   ├── data.py
+│   ├── inference.py
+│   ├── main.py
+│   ├── model.py
+│   └── utils.py
+└── wandb/                                # Weights and Biases 훈련 로그 폴더
+    └── [다양한 실험 로그 파일들]                              # 유틸리티 모듈
 ```
 
 ## 2. 코드에 대한 설명
