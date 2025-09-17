@@ -1,7 +1,7 @@
 import os
 import argparse
 import wandb
-from src.model import train
+from model import train
 
 
 def parse_args():
