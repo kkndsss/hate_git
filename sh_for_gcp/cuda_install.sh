@@ -1,8 +1,6 @@
-#!/bin/bash
-
-# CUDA 및 NVIDIA 드라이버 설치
-sudo apt-get update && echo "System update complete."
-sudo apt install -y nvidia-driver && echo "NVIDIA driver installed."
-
-# 시스템 재부팅 (주의: 스크립트 재실행 필요)
+# 패키지 목록 업데이트
+sudo apt-get update
+# NVIDIA 드라이버 및 유틸리티 525 버전 설치 & 관련 유틸리티도 함께 설치
+sudo apt install -y nvidia-driver-525-server nvidia-utils-525-server nvidia-compute-utils-525-server libnvidia-compute-525-server libnvidia-decode-525-server libnvidia-encode-525-server libnvidia-fbc1-525-server
+# 시스템 재부팅
 sudo reboot
